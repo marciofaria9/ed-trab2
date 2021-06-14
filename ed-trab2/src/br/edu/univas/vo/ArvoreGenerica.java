@@ -11,7 +11,7 @@ public class ArvoreGenerica {
 		float startValor = 0f;
 		final int quantProduto = 1;
 
-		No produto = criarNo(nome, startValor, quantProduto);
+		No produto = criarSubArvore(nome, startValor, quantProduto);
 
 		return produto;
 
