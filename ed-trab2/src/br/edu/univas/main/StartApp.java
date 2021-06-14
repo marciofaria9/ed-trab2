@@ -17,13 +17,12 @@ public class StartApp {
 
 	public void initialize() {
 
-		cadastrarArvore();
+		ArvoreGenerica arvore = new ArvoreGenerica();
+		cadastrarArvore(arvore);
 
 	}
 
-	public void cadastrarArvore() {
-
-		ArvoreGenerica arvore = new ArvoreGenerica();
+	public void cadastrarArvore(ArvoreGenerica arvore) {
 
 		// raiz nivel 0
 
@@ -70,6 +69,7 @@ public class StartApp {
 		No waterCooler = arvore.criarNo("Water Cooler", 200f, 1);
 		processador.filhos.add(waterCooler);
 
+		System.out.println(processador.getNome() + " preço: " + processador.getValorUni() + " quantidade: " + processador.getQuantidade());
+		
 	}
-
 }
