@@ -20,6 +20,7 @@ public class StartApp {
 		ArvoreGenerica arvore = new ArvoreGenerica();
 		cadastrarArvore(arvore);
 
+		
 	}
 
 	public void cadastrarArvore(ArvoreGenerica arvore) {
@@ -72,4 +73,5 @@ public class StartApp {
 		System.out.println(processador.getNome() + " preço: " + processador.getValorUni() + " quantidade: " + processador.getQuantidade());
 		
 	}
+	
 }

@@ -5,13 +5,13 @@ import java.util.List;
 
 public class ArvoreGenerica {
 
-
+	No produto;
 
 	public No criarProduto(String nome) {
 		float startValor = 0f;
 		final int quantProduto = 1;
 
-		No produto = criarSubArvore(nome, startValor, quantProduto);
+		produto = criarSubArvore(nome, startValor, quantProduto);
 
 		return produto;
 
@@ -39,4 +39,9 @@ public class ArvoreGenerica {
 
 	}
 
+	public float calculaPreco() {
+
+		return 0f;
+
+	}
 }
