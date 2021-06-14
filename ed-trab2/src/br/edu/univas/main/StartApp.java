@@ -24,9 +24,13 @@ public class StartApp {
 
 		No computador = arvore.criarProduto("Computador");
 
-		No placaMae = arvore.criarSubArvore("Placa Mãe", 0f, 1);
+		No gabinete = arvore.criarSubArvore("Gabinete", 300f, 1);
 		
-		computador.getFilhos().add(placaMae);
+		computador.getFilhos().add(gabinete);
+		
+		No placaMae = arvore.criarSubArvore("Placa Mãe", 400f, 1);
+		
+		gabinete.getFilhos().add(placaMae);
 		
 		No SSD = arvore.criarNo("SSD", 380f, 1);
 
