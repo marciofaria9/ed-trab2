@@ -1,17 +1,16 @@
 package br.edu.univas.vo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class No {
 
-	String nome;
+	public String nome;
 
-	Float valorUni;
+	public Float valorUni;
 
-	int quantidade;
+	public int quantidade;
 
-	List<No> filhos;
+	public ArrayList<No> filhos = new ArrayList();
 
 	public String getNome() {
 		return nome;
@@ -37,11 +36,11 @@ public class No {
 		this.quantidade = quantidade;
 	}
 
-	public List<No> getFilhos() {
+	public ArrayList<No> getFilhos() {
 		return filhos;
 	}
 
-	public void setFilhos(List<No> filhos) {
+	public void setFilhos(ArrayList<No> filhos) {
 		this.filhos = filhos;
 	}
 
