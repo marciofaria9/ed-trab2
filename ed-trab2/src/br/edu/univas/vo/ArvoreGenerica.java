@@ -39,9 +39,15 @@ public class ArvoreGenerica {
 
 	}
 
-	public float calculaPreco() {
 
-		return 0f;
+	public boolean isFolha(No no) {
+
+		if (no.filhos.size() == 0) {
+
+			return true;
+		}
+
+		return false;
 
 	}
 }
