@@ -75,6 +75,8 @@ public class StartApp {
 		arvore.addList(processador, waterCooler);
 
 		calculaPreco(computador, gabinete, placaMae, processador);
+		System.out.println("Lista de nós folha:");
+		arvore.imprimeNosFolha(computador);
 	}
 
 	public int readInt(Scanner scanner) {

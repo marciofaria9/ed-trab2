@@ -3,6 +3,7 @@ package br.edu.univas.vo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 public class ArvoreGenerica {
 	Scanner scanner = new Scanner(System.in);
 	No produto;
@@ -29,7 +30,6 @@ public class ArvoreGenerica {
 
 		No pai = criarNo(nome, valorUni, quantidade);
 
-		
 		return pai;
 
 	}
@@ -47,30 +47,28 @@ public class ArvoreGenerica {
 		return no;
 
 	}
-	
-	
-	
-	
-public void addList (No peça, No no) {
-		
+
+	public void addList(No peça, No no) {
+
 		peça.getFilhos().add(no);
+
+	}
+
+	public void imprimeNosFolha(No no) {
 		
+		if (isFolha(no)) {
+			System.out.print(no.getNome()+", ");
+		}
+		for (int i = 0; i < no.getFilhos().size(); i++) {
+			imprimeNosFolha(no.getFilhos().get(i));
+		}
 	}
 
-	
+	public boolean isFolha(No no) {
+		if (no.getFilhos().size() == 0) {
+			return true;
+		}
 
-	
-	public int readInt(Scanner scanner) {
-		int x = scanner.nextInt();
-		scanner.nextLine();
-		return x;
-
-	}
-
-	public float readFloat(Scanner scanner) {
-		float x = scanner.nextFloat();
-		scanner.nextLine();
-		return x;
-
+		return false;
 	}
 }
