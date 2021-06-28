@@ -2,10 +2,18 @@ package br.edu.univas.vo;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 public class ArvoreGenerica {
-
+	Scanner scanner = new Scanner(System.in);
 	No produto;
+
+	public No getProduto() {
+		return produto;
+	}
+
+	public void setProduto(No produto) {
+		this.produto = produto;
+	}
 
 	public No criarProduto(String nome) {
 		float startValor = 0f;
@@ -21,6 +29,7 @@ public class ArvoreGenerica {
 
 		No pai = criarNo(nome, valorUni, quantidade);
 
+		
 		return pai;
 
 	}
@@ -29,25 +38,39 @@ public class ArvoreGenerica {
 
 		No no = new No();
 
-		no.nome = nome;
+		no.setNome(nome);
 
-		no.valorUni = valorUni;
+		no.setValorUni(valorUni);
 
-		no.quantidade = quantidade;
+		no.setQuantidade(quantidade);
 
 		return no;
 
 	}
+	
+	
+	
+	
+public void addList (No peça, No no) {
+		
+		peça.getFilhos().add(no);
+		
+	}
 
+	
 
-	public boolean isFolha(No no) {
+	
+	public int readInt(Scanner scanner) {
+		int x = scanner.nextInt();
+		scanner.nextLine();
+		return x;
 
-		if (no.filhos.size() == 0) {
+	}
 
-			return true;
-		}
-
-		return false;
+	public float readFloat(Scanner scanner) {
+		float x = scanner.nextFloat();
+		scanner.nextLine();
+		return x;
 
 	}
 }

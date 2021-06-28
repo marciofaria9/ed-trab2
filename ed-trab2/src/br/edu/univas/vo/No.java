@@ -4,13 +4,23 @@ import java.util.ArrayList;
 
 public class No {
 
-	public String nome;
+	private String nome;
 
-	public Float valorUni;
+	private Float valorUni;
 
-	public int quantidade;
+	private int quantidade;
 
-	public ArrayList<No> filhos = new ArrayList();
+	private ArrayList<No> filhos = new ArrayList();
+	
+	private float valorTotal;
+
+	public float getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
+	}
 
 	public String getNome() {
 		return nome;
@@ -42,6 +52,22 @@ public class No {
 
 	public void setFilhos(ArrayList<No> filhos) {
 		this.filhos = filhos;
+	}
+
+	public float calculavalor(No no) {
+
+		
+		float valor = 0;
+		for ( int i = 0 ; i < no.getFilhos().size(); i++ ) {
+			
+			valor += no.getFilhos().get(i).getValorUni() * no.getFilhos().get(i).getQuantidade();
+			
+			
+		}
+		float valorTotal = valor + (no.getValorUni() * no.getQuantidade());
+		return valorTotal;
+		
+		
 	}
 
 }

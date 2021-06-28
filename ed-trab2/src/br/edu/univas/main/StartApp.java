@@ -2,6 +2,7 @@ package br.edu.univas.main;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import br.edu.univas.vo.ArvoreGenerica;
 import br.edu.univas.vo.No;
@@ -16,62 +17,108 @@ public class StartApp {
 	}
 
 	public void initialize() {
-
+		Scanner scanner = new Scanner(System.in);
 		ArvoreGenerica arvore = new ArvoreGenerica();
-		cadastrarArvore(arvore);
+		cadastrarArvore(arvore, scanner);
 
 	}
 
-	public void cadastrarArvore(ArvoreGenerica arvore) {
+	public void cadastrarArvore(ArvoreGenerica arvore, Scanner scanner) {
 
-		// raiz nivel 0
+		System.out.println("**********CADASTRO DE PRODUTO**********\n");
+		
+		System.out.println("Populando o nível 0\n");
+		        // raiz nivel 0
 
-		No computador = arvore.criarProduto("Computador");
+				No computador = arvore.criarProduto("Computador");
 
-		// nivel 1 filhos do computador
+				// nivel 1 filhos do computador
+				System.out.println("Populando o nível 1\n");
+				
+				No monitor = arvore.criarNo("Monitor", 1000f, 1);	
+                arvore.addList(computador, monitor);
+               
+                No mouse = arvore.criarNo("Mouse", 200f, 1);	
+				arvore.addList(computador, mouse);
+				
+				No teclado = arvore.criarNo("Teclado", 200f, 1);
+				arvore.addList(computador, teclado);
 
-		No monitor = arvore.criarNo("Monitor", 1000f, 1);
-		computador.filhos.add(monitor);
+				No gabinete = arvore.criarSubArvore("Gabinete", 300f, 1);
+				arvore.addList(computador, gabinete);
 
-		No mouse = arvore.criarNo("Mouse", 200f, 1);
-		computador.filhos.add(mouse);
+				// nivel 2 filhos do gabinete
+				System.out.println("Populando o nível 2\n");
+				No fonte = arvore.criarNo("Fonte", 400f, 1);
+				arvore.addList(gabinete,fonte);
 
-		No teclado = arvore.criarNo("Teclado", 200f, 1);
-		computador.filhos.add(teclado);
+				No placaMae = arvore.criarSubArvore("Placa Mãe", 400f, 1);
+				arvore.addList(gabinete,placaMae);
+				
+				// nivel 3 filhos da placa mae
+				System.out.println("Populando o nível 3\n");
+				No SSD = arvore.criarNo("SSD", 400f, 2);
+				arvore.addList(placaMae,SSD);
 
-		No gabinete = arvore.criarSubArvore("Gabinete", 300f, 1);
-		computador.filhos.add(gabinete);
+				No RAM = arvore.criarNo("RAM", 300f, 2);
+				arvore.addList(placaMae,RAM);
 
-		// nivel 2 filhos do gabinete
+				No placaDeVideo = arvore.criarNo("Placa de Vídeo", 1500f, 1);
+				arvore.addList(placaMae,placaDeVideo);
 
-		No fonte = arvore.criarNo("Fonte", 400f, 1);
-		gabinete.filhos.add(fonte);
+				No processador = arvore.criarSubArvore("Processador", 1000f, 1);
+				arvore.addList(placaMae,processador);
 
-		No placaMae = arvore.criarSubArvore("Placa Mãe", 400f, 1);
-		gabinete.filhos.add(placaMae);
+				// nivel 4 filho do processador
+				System.out.println("Populando o nível 4\n");
+				No waterCooler = arvore.criarNo("Water Cooler", 200f, 1);
+				arvore.addList(processador,waterCooler);
 
-		// nivel 3 filhos da placa mae
+         calculaPreco(computador,gabinete, placaMae,processador);
+	}
 
-		No SSD = arvore.criarNo("SSD", 400f, 1);
-		placaMae.filhos.add(SSD);
+	public int readInt(Scanner scanner) {
+		int x = scanner.nextInt();
+		scanner.nextLine();
+		return x;
 
-		No RAM = arvore.criarNo("RAM", 300f, 2);
-		placaMae.filhos.add(RAM);
+	}
 
-		No placaDeVideo = arvore.criarNo("Placa de Vídeo", 1500f, 1);
-		placaMae.filhos.add(SSD);
+	public float readFloat(Scanner scanner) {
+		float x = scanner.nextFloat();
+		scanner.nextLine();
+		return x;
 
-		No processador = arvore.criarSubArvore("Processador", 1000f, 1);
-		placaMae.filhos.add(processador);
+	}
 
-		// nivel 4 filho do processador
+	public void calculaPreco(No computador, No gabinete, No placaMae, No processador) {
 
-		No waterCooler = arvore.criarNo("Water Cooler", 200f, 1);
-		processador.filhos.add(waterCooler);
-
-		System.out.println(processador.getNome() + " preço: " + processador.getValorUni() + " quantidade: "
-				+ processador.getQuantidade());
-
+		
+		
+		
+		
+		processador.setValorTotal(processador.calculavalor(processador));
+		System.out.println("Valor total do processador: R$:" + processador.getValorTotal());	
+		float v1 = processador.getValorTotal();
+		
+		placaMae.setValorTotal(placaMae.calculavalor(placaMae));
+		System.out.println("Valor total da Placa Mãe: R$:" + placaMae.getValorTotal());
+		float v2 = placaMae.getValorTotal();
+		
+		gabinete.setValorTotal(gabinete.calculavalor(gabinete));
+		System.out.println("Valor total do gabinete: R$:" + gabinete.getValorTotal());
+		float v3 = gabinete.getValorTotal();
+		
+		computador.setValorTotal(computador.calculavalor(computador));
+		System.out.println("Valor total do computador: R$:" + computador.getValorTotal());
+		float v4 = computador.getValorTotal();
+		
+		System.out.println("\nValor Final: R$:" + (v1+v2+v3+v4));
+		
+		
+		
+		
+		
 	}
 
 }
