@@ -8,4 +8,4 @@ No nível 4 é cadastrado o water-cooler.
 
 O cadastro das peças são feitos usando os métodos feitos na classe ArvoreGenerica. Há um método especifico para cadastro de Folha, SubArvore e a Raiz.
 
-No final o programa calcula e imprime o preço de cada nível da árvore e depois faz a soma e imprime o valor final do produto e iprime uma lista com os nós folhas.
+No final o programa calcula e imprime o preço de cada nível da árvore e depois faz a soma e imprime o valor final do produto e imprime uma lista com os nós folhas.
